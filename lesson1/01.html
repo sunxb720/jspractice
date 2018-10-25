@@ -1,44 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>控制div属性</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        #container{width: 250px;margin: 0 auto;text-align: center;}
-        #showbox{width: 100px; height: 100px;background: black; margin: 10px auto; display:block;}
+        #showbox{width: 100px; height: 100px;background: black; margin: 10px auto; display:block; border-radius:10px;}
+        .container-fluid{border:solid 1px red;width: 300px;margin-top: 10px;}
+        input{margin-top:5px;}
     </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="container">
-        <input type="button", value="变高">
-        <input type="button", value="变宽">
-        <input type="button", value="变色">
-        <input type="button", value="隐藏">
-        <input type="button", value="重置">
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="button", value="变高" class="btn btn-primary btn-block">
+            </div>
+            <div class="col-sm-4">
+                <input type="button", value="变宽" class="btn btn-primary btn-block">
+            </div>
+            <div class="col-sm-4">
+                <input type="button", value="变色" class="btn btn-primary btn-block">
+            </div>
+        </div>
+            <div class="raw">
+                <div class="col-sx-6">
+                    <input type="button", value="隐藏" class="btn btn-warning btn-block">
+                </div>
+                <div class="col-sx-6">
+                    <input type="button", value="重置" class="btn btn-info btn-block">
+                </div>
+            </div>
+
         <div id="showbox"></div>
     </div>
     <script>
         var changeStyle = function(elem, attr, value){
-            elem.style[attr] = value;
+            elem.css(attr, value);
         }
-        window.onload = function(){
+        $(document).ready(function(){
             var oBtn = document.getElementsByTagName("input");
-            var oDiv = document.getElementById("showbox");
-            var oAtt = ["height", "width", "background", "display", "display"];
-            var oVal = ["200px", "200px", "red", "none", "block"];
-
-            for(var i = 0; i < oBtn.length; i++){
-                oBtn[i].index = i;
-                oBtn[i].onclick = function(){
-                    if(this.index == oBtn.length - 1){
-                        oDiv.style.cssText = " ";
-                    }
-                    changeStyle(oDiv, oAtt[this.index], oVal[this.index]);
-                }
-            }
-        }
+            alert(typeof(oBtn));
+        })
     </script>
 </body>
 </html>
