@@ -44,9 +44,22 @@
             elem.css(attr, value);
         }
         $(document).ready(function(){
-            var oBtn = document.getElementsByTagName("input");
-            alert(typeof(oBtn));
+            var oBtn = $("input");
+            var oDiv = $("#showbox");
+            var oAtt = ["height", "width", "background", "display", "display"];
+            var oVal = ["200px", "200px", "green", "none", "block"];
+
+            for(var i = 0; i < oBtn.length; i++){
+                oBtn[i].index = i;
+                oBtn[i].onclick = function(){
+                    if(this.index == oBtn.length - 1){
+                        oDiv.removeAttr("style");
+                    }
+                    changeStyle(oDiv, oAtt[this.index], oVal[this.index]);
+                }
+            }
         })
+        
     </script>
 </body>
 </html>
